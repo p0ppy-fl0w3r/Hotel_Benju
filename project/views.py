@@ -254,9 +254,13 @@ def create(request):
 
 
 def showbookedrooms(request, search_param):
-    rooms = customercheckout.objects.filter(customer_name = search_param)
-    return render(request, "room.html", {'rooms': rooms, })
+        rooms = customercheckout.objects.filter(customer_name = search_param)
+        return render(request, "room.html", {'rooms': rooms, })
 
+
+def showAllrooms(request):
+    rooms = customercheckout.objects.all()
+    return render(request, "room.html", {'rooms': rooms, })
 
 def foodorders(request):
     order = OrderedFoodItems.objects.all()

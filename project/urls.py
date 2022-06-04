@@ -15,6 +15,7 @@ urlpatterns = [
     path('updatepage', views.updatepage, name='updatepage'),
     path('show/', views.show, name='show'),
     path('showbookedrooms/<str:search_param>', views.showbookedrooms, name='showbookedrooms'),
+    path('showallrooms', views.showAllrooms, name='showallrooms'),
     path('foodorders', views.foodorders, name='foodorders'),
     path('showmenu', views.showmenu, name='showmenu'),
     path('showstaffs', views.showstaffs, name='showstaffs'),
