@@ -92,16 +92,17 @@ def room_booked(request):
                 try:
                     get_room = RoomBook.objects.get(room_num=room_num)
                     if get_room.check_out_status == True:
+
                         get_room.firstname = firstname
                         get_room.lastname = lastname
                         get_room.address = address
                         get_room.room_type = room_type
                         get_room.room_num = room_num
-                        get_room.checkin=checkin,
-                        get_room.checkout=checkout,
-                        get_room.room_price=room_price, 
-                        get_room.phone=phone, 
-                        get_room.email=email, 
+                        get_room.checkin=checkin
+                        get_room.checkout=checkout
+                        get_room.room_price=room_price
+                        get_room.phone=phone
+                        get_room.email=email
                         get_room.citizenship=citizenship
                         get_room.check_out_status = False                        
                         get_room.save()
@@ -277,6 +278,7 @@ def roomstatement(request):
     context = {'rooms': room, 'foods': foods}
     if request.method == "POST":
         room_num = request.POST['customer_room_num']
+        customer_name = request.POST['customer_name']
         customer_name = request.POST['customer_name']
         customer_phone = request.POST['customer_phone']
         customer_address = request.POST['customer_address']
