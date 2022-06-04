@@ -17,7 +17,7 @@
 
                     {% for sr in searchroom %}
                         <div><a
-                                href="{% url 'searchitem' %}"> {{ sr.customer_name }}{{ sr.customer_citizenship }}</a></div>
+                                href="{% url 'showbookedrooms' search_param=sr.customer_name %}"> {{ sr.customer_name }} - {{ sr.customer_citizenship }}</a></div>
                     {% endfor %}
 
                 {% endif %}

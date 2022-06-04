@@ -202,6 +202,7 @@ def search(request):
         searchroom = customercheckout.objects.filter(customer_name__contains=searched)
         return render(request, "room.html", {'searched': searched, 'items': items, 'searchroom': searchroom})
     else:
+        search_param = request.GET['searched']
         return render(request, "room.html")
 
 
@@ -252,8 +253,8 @@ def create(request):
     return render(request, 'additems.html')
 
 
-def showbookedrooms(request):
-    rooms = customercheckout.objects.all()
+def showbookedrooms(request, search_param):
+    rooms = customercheckout.objects.filter(customer_name = search_param)
     return render(request, "room.html", {'rooms': rooms, })
 
 
