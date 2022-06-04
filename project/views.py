@@ -148,7 +148,7 @@ def delete_book(request, P_id):
     con = customercheckout.objects.get(id=P_id)
     con.delete()
     print("delete successfully")
-    return redirect("/showbookedrooms" ) 
+    return redirect("/showallrooms" ) 
 
 
 def delete_roombook(request, P_id):
