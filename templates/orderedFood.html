@@ -1,0 +1,64 @@
+{% extends 'basetemplate.html' %}
+
+{% block content %}
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Ordered Food Details</h1>
+        
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Ordered Food Details </h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Table No.</th>
+                <th>Room</th>
+                <th>Food</th>
+                <th>Price</th>
+                <th>Ordered Time</th>
+                <th>Action</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            {% for o in orders %}
+                <tr>
+                    <td>{{ o.customer_tablenum }}</td>
+                    <td>{{ o.customer_roomnum }}</td>
+                    <td>{{ o.customer_orderitem }}</td>
+                    <td> ${{ o.customer_itemprice }}</td>
+                    <td> {{ o.customer_ordertime }}</td>
+                    <td>
+                        <div class=""
+                             style="padding-right:20px;padding-left: 20px;padding-bottom: 10px">
+                            <a class="btn btn-danger btn-user btn-block"
+                               href="{% url 'delete_foodadmin' o.id %}">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    </div>
+    </div>
+    </div>
+    </div>
+    
+
+    <!-- /.container-fluid -->
+
+    <!-- End of Main Content -->
+
+
+
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'basetemplate.html' %}
+
+{% block content %}
+
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Add Food</h1>
+        
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Add Food </h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Item Name</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Action</th>
+
+
+            </tr>
+            </thead>
+            <tbody>
+            <form action="/create_items" method="POST" class="" enctype="multipart/form-data">
+                {% csrf_token %}
+                <tr>
+                    <td><input type="file" name="image" class="form-control"/></td>
+                    <td><input type="text" name="itemname" onfocusout="fn()"
+                               placeholder="Item Name"
+                               required></td>
+                    <td><input type="number" name="price" placeholder="Price"></td>
+                    <td><input type="text" name="desc" placeholder="Description" required></td>
+
+                    <td>
+                        <div class="button">
+                            <input type="submit" value="Add" class="btn btn-info btn-user btn-block"/>
+                        </div>
+
+                    </td>
+
+                </tr>
+            </form>
+
+            </tbody>
+        </table>
+    </div>
+    <!-- /.container-fluid -->
+        {% if success %}
+        <div class="">
+            <strong style="padding-left: 380px;color: green">Food Added Successfully!!!!</strong></div>
+        {% endif %}
+    </div>
+    </div>
+    </div>
+    
+    <!-- End of Main Content -->
+
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends 'basetemplate.html' %}
+{% load static %}
+
+{% block content %}
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <h1 class="h3 mb-2 text-gray-800">Food Menu</h1>
+        
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Food Items </h6>
+            </div>
+            {% comment %} {% if success %} {% endcomment %}
+        {% comment %} <div class="">
+            <strong style="padding-left: 380px;color: green">Food Deleted Successfully!!!!</strong></div>
+        {% endif %} {% endcomment %}
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <thead>
+            <tr>
+                <th>Food ID</th>
+                <th>Image</th>
+                <th>Item</th>
+                <th>Price</th>
+                <th>Description</th>
+                <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for f in foods %}
+                <tr>
+                    <td>{{ f.id }}</td>
+                    <td><img width="100px" height="100px"
+                             src="{% static 'assets/' %}{{ f.image }}"
+                             alt="item"></td>
+                    <td>{{ f.itemname }}</td>
+                    <td>{{ f.price }}</td>
+                    <td>{{ f.desc }}</td>
+                    <td>
+                        <div class="button">
+                            <a class="btn btn-danger btn-user btn-block" href="{% url 'delete_item' f.id %}">Remove</a>
+                        </div>
+                    </td>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            </div>
+            </div>
+            <!-- End of Main Content -->
+
+{% endblock %}

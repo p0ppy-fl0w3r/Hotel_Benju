@@ -1,0 +1,110 @@
+{% extends 'basetemplate.html' %}
+
+{% block content %}
+
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+            <div class="overview-boxes">
+                {% if searched %}
+
+
+                    <div>
+
+                        <h2> Results for {{ searched }} are</h2></div>
+                    <br>
+
+                    {% for sr in searchroom %}
+                        <div><a
+                                href="{% url 'searchitem' %}"> {{ sr.customer_name }}{{ sr.customer_citizenship }}</a></div>
+                    {% endfor %}
+
+                {% endif %}
+
+            </div>
+            <h1 class="h3 mb-2 text-gray-800">Room Booking Details</h1>
+            
+    
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Room Booking Details </h6>
+                </div>
+                {% if error_message %}
+                                        <span class="text-danger" style="margin-left: 35%; ">{{ error_message }}</span>
+                                        
+                                        {% endif %}
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <!-- {% if messages %}
+                        {% for remove in messages %}
+                        {{remove}}
+                        
+                        {% endfor %}
+                        {% endif %} -->
+                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+       
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Room Number</th>
+                <th>Room Type</th>
+                <th>Booked By</th>
+                <th>Phone Number</th>
+                <th>Citizenship Number</th>
+                <th>Address</th>
+                <th>Check In</th>
+                <th>Check Out</th>
+                <th>Email</th>
+                <th>Booked Date</th>
+                <th>Room Price</th>
+{#              <th>Food Price</th>#}
+                <th>Total Amount</th>
+                <th>Action</th>
+
+            </tr>
+
+            </thead>
+            <tbody>
+            {% for r in rooms %}
+                <tr>
+                    
+                    <td>{{ r.id }}</td>
+                    <td>{{ r.customer_room_num }}</td>
+                    <td>{{ r.customer_room_type }}</td>
+                    <td>{{ r.customer_name }}</td>
+                    <td>{{ r.customer_phone }}</td>
+                    <td>{{ r.customer_citizenship }}</td>
+                    <td>{{ r.customer_address }}</td>
+                    <td>{{ r.customer_checkin }}</td>
+                    <td>{{ r.customer_checkout }}</td>
+                    <td>{{ r.customer_email }}</td>
+                    <td>{{ r.customer_booked_date }}</td>
+                    <td> ${{ r.customer_roomprice }}</td>
+{#                  <td> {{ r.food_price }}</td>#}
+                    <td> ${{ r.totalamount }}</td>
+                    <td>
+                        <div class="button">
+                            <a class="btn btn-danger btn-user btn-block" href="{% url 'delete_book' r.id %}">Remove</a>
+                        </div>
+
+                    </td>
+
+                    <td>        {% if success %}
+                        <div class="">
+                            <strong>Receipt Successfully Sent!</strong></div>
+                    {% endif %}</td>
+
+
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+            <!-- End of Main Content -->
+{% endblock %}

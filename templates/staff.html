@@ -1,0 +1,95 @@
+{% extends 'basetemplate.html' %}
+
+{% block content %}
+
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+            <div class="overview-boxes">
+                {% if searched %}
+
+
+                    <div>
+
+                        <h2> Results for {{ searched }} are</h2></div>
+                    <br>
+
+                    {% for sr in searchroom %}
+                        <div><a
+                                href="{% url 'searchitem2' %}"> {{ sr.username }}{{ sr.phone }}</a></div>
+                    {% endfor %}
+
+                {% endif %}
+
+            </div>
+        <!-- Page Heading -->
+        <h1 class="h3 mb-2 text-gray-800">Staff Details</h1>
+       
+
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Staff Details </h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Staff ID</th>
+                            <th>Name</th>
+                            <th>User Name</th>
+                            <th>Position</th>
+                            <th>Email</th>
+                            <th>Password</th>
+                            <th>Phone </th>
+                            <th>Salary</th>
+                            <th>Action</th>
+                        </tr>
+                        <div class="overview-boxes">
+                            {% if searched %}
+
+
+                                <div>
+                                    <h2> Results for {{ searched }} are</h2></div>
+                                <br>
+
+                                {% for item in items %}
+                                    <div><a
+                                            href="{% url 'searchitem' %}"> {{ item.fullname }}</a></div>
+                                {% endfor %}
+
+                            {% endif %}
+
+                        </div>
+                        </thead>
+
+                        <tbody>
+                        {% for s in staff %}
+                            <tr>
+                                <td>{{ s.id }}</td>
+                                <td>{{ s.fullname }}</td>
+                                <td>{{ s.username }}</td>
+                                <td>{{ s.position }}</td>
+                                <td>{{ s.email }}</td>
+                                <td>{{ s.password }}</td>
+                                <td>{{ s.phone }}</td>
+                                <td>{{ s.salary }}</td>
+                                <td>
+                                    <div class="button">
+                                        <a class="btn btn-danger btn-user btn-block" href="{% url 'delete_staff' s.id %}">Resigned</a>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- End of Main Content -->
+{% endblock %}

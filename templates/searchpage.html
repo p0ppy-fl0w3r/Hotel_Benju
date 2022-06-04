@@ -1,0 +1,31 @@
+{% extends 'basetemplate.html' %}
+
+{% block content %}
+
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+            <div class="overview-boxes">
+                {% if searched %}
+
+
+                    <div>
+
+                        <h2> Results for {{ searched }} are</h2></div>
+                    <br>
+
+                    {% for sr in searchroom %}
+                        <div><a
+                                href="{% url 'searchitem' %}"> {{ sr.firstname }}{{ sr.citizenship }}</a></div>
+                    {% endfor %}
+
+                {% endif %}
+
+            </div>
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+{% endblock %}
